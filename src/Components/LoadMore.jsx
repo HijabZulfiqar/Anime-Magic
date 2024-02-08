@@ -1,11 +1,25 @@
-import React from 'react';
+"use client";
+import React, { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
+import useAnime from "../page/action";
 
+ 
 
-function Card({anime}) {
-  
+function LoadMore() {
+   
+    const [page, setPage] = useState(1);
+  const { ref, inView } = useInView({ trackVisibility: true, delay: 100 });
+  const animeData = useAnime(page);
+
+  useEffect(() => {
+    if (inView) {
+      setPage(prevPage => prevPage + 1);
+    }
+  }, [inView]);
   return (
-    <div className='grid   grid-cols-1  lg:grid-cols-2  2xl:grid-cols-3 gap-7 gap-y-3  mx-auto  '>
-      {anime && anime.map(animeItem => (
+    <>
+     <div className='grid   grid-cols-1  lg:grid-cols-2  2xl:grid-cols-3 gap-7 gap-y-3  mx-auto  '>
+      {animeData && animeData.map(animeItem => (
         <div key={animeItem.id} className=" rounded">
           <div className="  h-[37vh]">
             <img
@@ -50,7 +64,18 @@ function Card({anime}) {
         </div>
       ))}
     </div>
+      <section className="flex justify-center items-center w-full">
+        <div ref={ref}>
+          <img
+            src="./spinner.svg"
+            alt="spinner"
+           
+            className="object-contain w-14 h-14 "
+          />
+        </div>
+      </section>
+    </>
   );
 }
 
-export default Card;
+export default LoadMore;
