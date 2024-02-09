@@ -8,7 +8,7 @@ const Main = () => {
 
     const { data: anime } = useAnime(1);
   return (
-    <div className=" lg:max-w-6xl xl:max-w-7xl mx-auto bg-[#0F1117]">
+    <div className=" lg:max-w-6xl xl:max-w-8xl px-4 mx-auto bg-[#0F1117]">
        
         <Hero/> 
         <div className="  py-24 px-8 flex flex-col gap-10">

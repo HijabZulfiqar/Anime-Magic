@@ -4,7 +4,7 @@ import React from 'react';
 function Card({anime}) {
   
   return (
-    <div className='grid   grid-cols-1  lg:grid-cols-2  2xl:grid-cols-3 gap-7 gap-y-3  mx-auto  '>
+    <div className='grid  px-10 grid-cols-1  lg:grid-cols-2  2xl:grid-cols-3 gap-7 gap-y-3  mx-auto  '>
       {anime && anime.map(animeItem => (
         <div key={animeItem.id} className=" rounded">
           <div className="  h-[37vh]">
@@ -12,7 +12,7 @@ function Card({anime}) {
               src={`https://shikimori.one${animeItem.image.original}`}
               alt={animeItem.name}
                 
-              className="rounded-xl object-cover w-full h-full"
+              className="rounded-xl object-cover  h-full"
             />
           </div>
           <div className="py-4 flex flex-col gap-3">
